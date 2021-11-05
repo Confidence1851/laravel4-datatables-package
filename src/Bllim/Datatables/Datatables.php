@@ -64,7 +64,12 @@ class Datatables
     public function __construct()
     {
 
-        $this->setData($this->processData(Input::get()));
+        try{
+            $this->setData($this->processData(Input::get()));
+        }
+        catch(\Exception $e){
+            $this->setData($this->processData(request()->all());
+        }
 
         return $this;
     }
